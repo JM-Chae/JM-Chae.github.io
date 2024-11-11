@@ -28,16 +28,28 @@
 
   <div class id="box2">
   <ul>
-    <b>
-      <li><a href="./Site/Introduce.html" target="_self">Introduce</li></a>
-      <li><a href="./Site/Now.html"target="_self">Now</li></a>
-      <li><a href="./Site/Review.html"target="_self">Review</li></a>
-      <li><a href="./Site/Odds and ends.html"target="_self">Odds and ends</li></a>
-    </b>
+      <li><a href="./Page/Introduce.html" target="_self">Introduce</a></li>
+      <li><a href="./Page/Now.html"target="_self">Now</a></li>
+      <li><a href="./Page/Review.html"target="_self">Review</a></li>
+      <li><a href="./Page/Odds and ends.html"target="_self">Odds and ends</a></li>
   </ul>
   </div>
   <!--뷰어 창을 일정 이상 축소시켰을 때
   우측 메뉴가 하단에 결합되는 식으로 이동되게 하고 싶다. -->
 </body>
 </html>
+
+<script>
+	
+	const path = require("path");
+	const fs = require("fs")
+	const dirPath = path.join('JM-Chae.github.io', "Page")
+	const contentFiles = fs.readdirSync(dirPath)
+	
+	console.log(contentFiles)
+	document.getElementById("list").innerHTML =
+			`
+			<li ></li>
+			`
+</script>
 <!-- 최신 글 표시하는 기능, 방명록 기능 넣고 싶다. -->
