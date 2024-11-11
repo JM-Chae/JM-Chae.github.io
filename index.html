@@ -8,9 +8,13 @@
   <link rel="stylesheet" href="./Style/Style.css">
   <link rel="shortcut icon" href="./icon.jpg" type="image/x-icon">
 </head>
+
 <body>
-  <div class id="box">
-  <h1 class id="title"><span class="style-1">드넓은 세상으로</span></h1>
+	<nav>
+
+	</nav>
+  <div class="box">
+  <h1 class="title"><span class="style-1">드넓은 세상으로</span></h1>
   <hr>
   <h2>들어가며</h2>
     <p>
@@ -25,31 +29,20 @@
   <hr>
   <!--여기다가 무슨 내용을 추가 하자. -->
   </div>
-
-  <div class id="box2">
-  <ul>
-      <li><a href="./Page/Introduce.html" target="_self">Introduce</a></li>
-      <li><a href="./Page/Now.html"target="_self">Now</a></li>
-      <li><a href="./Page/Review.html"target="_self">Review</a></li>
-      <li><a href="./Page/Odds and ends.html"target="_self">Odds and ends</a></li>
-  </ul>
-  </div>
-  <!--뷰어 창을 일정 이상 축소시켰을 때
-  우측 메뉴가 하단에 결합되는 식으로 이동되게 하고 싶다. -->
 </body>
+	<div class="list">
+		<div class="box2">
+			<ul>
+				<li><a href="./Page/Introduce.html" target="_self">Introduce</a></li>
+				<li><a href="./Page/Now.html"target="_self">Now</a></li>
+				<li><a href="./Page/Review.html"target="_self">Review</a></li>
+				<li><a href="./Page/Odds and ends.html"target="_self">Odds and ends</a></li>
+				<li><a href = "./Page/NoteList.html">NoteList</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!--뷰어 창을 일정 이상 축소시켰을 때
+	우측 메뉴가 하단에 결합되는 식으로 이동되게 하고 싶다. -->
 </html>
-
-<script>
-	
-	const path = require("path");
-	const fs = require("fs")
-	const dirPath = path.join('JM-Chae.github.io', "Page")
-	const contentFiles = fs.readdirSync(dirPath)
-	
-	console.log(contentFiles)
-	document.getElementById("list").innerHTML =
-			`
-			<li ></li>
-			`
-</script>
 <!-- 최신 글 표시하는 기능, 방명록 기능 넣고 싶다. -->
