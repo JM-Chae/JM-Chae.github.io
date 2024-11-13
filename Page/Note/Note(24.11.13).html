@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">input - Scanner, BufferedReader)</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../icon.jpg" type = "image/x-icon">
+	<script src = "../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.11.13</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h3>오늘부터 제대로 TIL을 작성하려고 마음 먹었다.</h3>
+			이런 것에 재주가 없어서(항상 너무 장황해져서) 서투르긴 하지만, 그래도 향후를 위해 꾸준히 작성해 보려고 한다.
+			<br>
+			<hr>
+			<br>
+			
+			<p>오늘은 The Space의 ListView에 썸네일 표시 기능을 추가했다.</p>
+			<p>처음엔 그냥 멀티파트 폼 데이터 형식으로 API 호출해서 반환된 값을 그대로 표시하려고 해 봤는데, 이상한 문자열의 집합만 표시되어서 당황했다.</p>
+			<p>찾아 보니까 반환 타입을 blob으로 설정해서, 오브젝트URL을 생성한 후, 그 URL을 가지고 접근해야 이미지 파일 출력이 가능하더라. 파일의 경우 바이너리 데이터를 포함해서 그렇다고 한다.</p>
+			<p>그래도 문자열 배열을 필요한 형식으로 가공하는 건 꽤 익숙해진 거 같아서 기분이 좋다.</p>
+			<br>
+			
+			<p>그 이후에 실제로 뷰에서 표시하는 건 el-popover를 사용해서 mouseover 이벤트 발생시 해당 리스트 객체의 fileNames 배열에 이미지 확장자를 가진 이름이 존재할 경우 썸네일을 불러오게끔 만들었는데, 생각만큼 잘 안 되어서 또 시간을 잡아 먹었다.</p>
+			<p>element+ 공식문서랑 레딧 구글링 해서 방법을 visible 옵션을 사용하면 된다는 건 알아냈는데, visible에 전달되는 불린 값을 전역 변수로 처리해 버리니, table의 전체 row가 visible 되더라.....</p>
+			<p>구글링 해도 잘 안 나와서 한참을 해매다가, 리스트 객체의 인터페이스에 visible 불린 필드를 추가하고, mouseover 이벤트 발생할 때 해당 row의 데이터를 전달해서 값을 수정하는 방법으로 해결했다.</p>
+			<br>
+			
+			<p>fileNames 필드를 백에서 가져오는 것도, 처음에는 파일 이름에 고유 번호를 정해서 유니크를 추가했는데, 파일 이름이 변경되는 것이 유저 입장에선 별로일 거 같아서 파일 이름은 그대로 두고, ID값을 이름으로 갖는 폴더를 생성해서 저장하는 방식으로 이름 중복 데이터 저장을 회피하게끔 바꾸었는데, 그로 인해서 한 가지 문제가 생겼다.</p>
+			<p>백단에서 이미 fileNames에 id+originalFileName 이런 방식으로 프론트에 문자열을 넘겨 주게 처음에 설계를 해버렸는데, API는 폴더(id)/파일명으로 접근하게 변경했고, 그로 인해서 프론트에서 요청할 때 문자열을 한 번 가공해야 하는 번거로움이 생겼다. 수정하면 할 수 있겠는데, 일단 귀찮으니 그대로 두기로 했다. 나중에 얼추 구현이 완료되면 한 번 더 전체적으로 코드를 수정해야겠다.</p>
+			<p>너무 지저분한 거 같아.......</p>
+			<br>
+			<p>처음에 설계를 너무 엉성하게 한 걸까? 나 혼자 개발할 적에는 문제가 없겠지만, 실무에서 이렇게 되어 버리면 꽤 혼선이 생길 거 같다. 다음부터는 제대로 문서화도 해 보고, 설계할 때 좀 더 유저 입장에서 생각하여 수정할 일이 최대한 없도록 만들어 보자.</p>
+			<br>
+			<p>또, 오늘은 슬라이드 윈도우 알고리즘 문제를 풀었다 <a href = "https://www.acmicpc.net/source/86397113" target="_blank">(백준 12891번 문제)</a></p>
+			<p>강의를 보고 문제를 풀고 있는 터라, 처음에는 강의를 보지 않고 혼자서 풀 수 있을 양 싶으면 바로 코드를 작성해서 제출해 보고 있는데, substring과 replace 메서드를 이용하여 문제를 풀어서 테스트까지는 문제 없이 정답을 출력해 냈는데, 시간초과란다.</p>
+			<p>결국 강의를 봤는데, 코드는 좀 더 복잡해 보이지만, 확실히 시간 복잡도는 낮은 거 같다. On? substring과 replace 메서드에 for문이 포함되어 있어서, 비교 연산 까지 들어가면 내 코드는 on^2였던 거 같다....</p>
+			<hr>
+			<p>백엔드 지망이지만, 최근 프론트에만 시간을 너무 들이고 있어서 꽤 복잡한 심정이다.</p>
+			<p>물론, 백이나 프론트 가리지 않고 업무가 주어지면 열심히 해 볼 생각이지만, 기본적으로 백엔드에 집중하고 싶은데.</p>
+			<p>얼른 얼추 정리하고 새로운 서비스를 추가하고 싶다.</p>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../Odds and ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+
+
+<!--뷰어 창을 일정 이상 축소시켰을 때
+우측 메뉴가 하단에 결합되는 식으로 이동되게 하고 싶다. -->
+</html>
