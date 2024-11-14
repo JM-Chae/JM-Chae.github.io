@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../icon.jpg" type = "image/x-icon">
+	<script src = "../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.11.14</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h3>역시 아직 이런 문제 풀이에 많이 익숙하지 못한 것 같다.</h3>
+			<a style="float: left" href = "https://www.acmicpc.net/problem/17413">백준 17413번</a>&nbsp
+			문제에 시간을 많이 허비했다. 정답을 맞추지도 못했고....
+			Stack 자료 구조의 원리 자체는 단순해서 이해하고 있었는데, 문제의 조건에 맞추어 인덱싱 하고 if문을 돌리는 게 너무 어려운 것 같다....
+			내일 다시 풀어 봐야지.
+			<br>
+			<hr>
+			<br>
+			
+			<h4>─ 오늘은 The Space의 ListView에 검색 기능을 추가했다.</h4>
+			<p>처음에 구현할 때는 일단 게시판의 구현만 생각하고, 그냥 코드를 따라치는 수준이어서 리스트 반환의 검색 로직에 대한 이대도도 많이 없었는데, 그 때문에 원하던 결과 값이 제대로 안 나오더라.</p>
+			<p>BooleanBuilder에 구문을 추가하는 순서와 or/and 연산자가 어떤 식으로 동작하는지 이번에 파악한 것 같다. 그걸 토대로, 카테고리와 커뮤니티의 조건은 and로, 나머지 게시판 내의 검색은 or로 바꾸어 주니 원하던 대로 동작하는 것을 확인했다.</p>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../Odds and ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+
+
+<!--뷰어 창을 일정 이상 축소시켰을 때
+우측 메뉴가 하단에 결합되는 식으로 이동되게 하고 싶다. -->
+</html>
