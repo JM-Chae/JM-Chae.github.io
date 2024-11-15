@@ -100,6 +100,7 @@ pre {
 
 .accent
 {
+  display: inline-block;
   font-weight: bold;
   color: #aa2d44;
 }
