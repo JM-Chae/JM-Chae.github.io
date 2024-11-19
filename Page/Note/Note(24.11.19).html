@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../icon.jpg" type = "image/x-icon">
+	<script src = "../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.11.19</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h4>에디터 쪽도 일단은 완성.</h4>
+			<p>비정상적인 페이지 이탈 시 서버에서 이미지를 내리는 로직까지 구현했다(프론트). 하지만, 나중에는 백엔드 측에 애초에 에디터를 통해 이미지를 저장할 때에 임시 저장 플래그를 같이 보내서,
+				 세션 만료 시까지 임시 저장 플래그 값이 유요하다면 정크 데이터로 판단하여 삭제하는 로직을 구현해야 할 것 같다. 아무래도 프론트에서 사용자의 화면 이동 등을 잘 캐치해서 서버에서 바로바로 지울 수가 없을 것 같기도 하고,
+				 동시성?을 고려했을 때, 이용자가 잘 없는 시간대에 정크 파일의 임시 저장 플래그를 체크해서 일괄적으로 삭제시키는 편이 더 좋지 않을까?</p>
+			<br>
+			<hr>
+			<br>
+			
+			<h4>기수 정렬</h4>
+			<p>오늘은 기수 정렬을 구현해 봤다. 답지 안 보고 구현할 수 있을 정도였던 거 같은데. 그래도 2시간이나 걸렸다... ㅠ_ㅠ
+				 다만, 음수일 때는 처리하지 못한다. 배열 2개를 만들어서, 값을 저장할 때 음수 배열과 양수 배열을 따로 만들고,
+				 음수 배열을 먼저 정렬한 다음 양수 배열을 정렬하게 하여 둘을 하나로 합쳐서 출력하게 하면 되지 싶다.
+				 오늘도 여기서 삽질을 많이 했지만, 그래도 하나 더 배운 느낌은 든다....
+			</p><br>
+			
+			<p>병합 정렬도 구현해 봤는데, 이건 혼자 힘으로는 구현을 못해서 답지를 봤다. 다음 주에 복습 해야지....</p>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../Odds and ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+
+
+<!--뷰어 창을 일정 이상 축소시켰을 때
+우측 메뉴가 하단에 결합되는 식으로 이동되게 하고 싶다. -->
+</html>
