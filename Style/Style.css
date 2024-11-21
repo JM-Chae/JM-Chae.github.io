@@ -1,106 +1,106 @@
-body
-{
-  background-color: rgba(0, 0, 0, 0.941);
-  display: flex;
-  margin: 20px 10px 20px 10px;
-  color:white;
+body {
+    background-color: rgba(0, 0, 0, 0.941);
+    display: flex;
+    margin: 20px 10px 20px 10px;
+    color: white;
 }
 
-.note
-{
-  padding: 0;
-  min-width: 49vw;
-  font-size: 1.5em;
-
-  li {
+.note {
+    padding: 0;
+    min-width: 49vw;
     font-size: 1.5em;
-    padding: 0.2em;
-  }
+
+    li {
+        font-size: 1.5em;
+        padding: 0.2em;
+    }
 
 }
 
-.box
-{
-  padding: 30px 30px 30px 30px;
-  background-color: rgb(32, 32, 32);
-  border-radius: 2em;
-  min-width: 500px;
-}
-.box2
-{
-  margin: 0 1em 0 1em;
-  padding: 10px 10px 10px 10px;
-  background-color: rgb(32, 32, 32);
-  border-radius: 2em;
-  width: fit-content;
+.box {
+    padding: 30px 30px 30px 30px;
+    background-color: rgb(32, 32, 32);
+    border-radius: 2em;
+    min-width: 500px;
 }
 
-.style-1
-  {
+.box2 {
+    margin: 0 1em 0 1em;
+    padding: 10px 10px 10px 10px;
+    background-color: rgb(32, 32, 32);
+    border-radius: 2em;
+    width: fit-content;
+}
+
+.style-1 {
     color: #3b4ab8;
     text-shadow: 0 1px gray, 1px 0 gray, 1px 1px gray, 0 0 gray, -1px 0 gray, 0 -1px gray, -1px -1px gray;
-  }
-
-  .title
-{
-  margin: 0 0 20px 0;
 }
-a
-{
-  text-decoration: none;
+
+.title {
+    margin: 0 0 20px 0;
 }
-a:link {color: rgba(151, 234, 255, 0.663)}
-a:visited {color: aqua}
+
+a {
+    float: left;
+    text-decoration: none;
+}
+
+a:link {
+    color: rgba(151, 234, 255, 0.663)
+}
+
+a:visited {
+    color: aqua
+}
 
 
+ul {
+    padding: 0 2em 0 2em;
+}
 
-ul
-{
-  padding: 0 2em 0 2em;
+li {
+    min-width: max-content;
 }
-li
-{
-  min-width:max-content;
-}
-li:hover, a:hover
-  {
+
+li:hover, a:hover {
     color: rgb(255, 104, 104);
-  }
-p 
-  {
+}
+
+p {
     text-indent: 1em;
     max-width: 900px;
     margin: 0.5em;
-  }
-  a{display: block}
+}
 
-  .navSpace
-  {
+a {
+    display: block
+}
+
+.navSpace {
     min-width: 25vw;
-  }
-  nav
-  {
+}
+
+nav {
     position: fixed;
     min-width: 25vw;
     top: 10vh;
     margin-left: 2em;
-  }
-
-  .list
-  {
-    min-width: 25vw;
-  }
-
-pre {
-  white-space: pre-wrap;
-  background-color: #161c23;
-  border-radius: 1em;
-  padding-left: 2em;
 }
 
-.accent
-{
-  display: contents;
-  font-weight: bold;
-  color: #aa2d44;
+.list {
+    min-width: 25vw;
+}
+
+pre {
+    white-space: pre-wrap;
+    background-color: #161c23;
+    border-radius: 1em;
+    padding-left: 2em;
+}
+
+.accent {
+    display: contents;
+    font-weight: bold;
+    color: #aa2d44;
 }
