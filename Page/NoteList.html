@@ -7,7 +7,11 @@
 	<title>Document</title>
 	<link rel = "stylesheet" href = "../Style/Style.css">
 	<link rel = "shortcut icon" href = "../icon.jpg" type = "image/x-icon">
-	<script src = "../Js/Main.js"></script>
+	<style>
+		.note ol {
+			display: none;
+		}
+	</style>
 </head>
 
 
@@ -16,72 +20,111 @@
 <body>
 <nav>
 </nav>
-<div class="note">
-	<ol>
+<div class = "note">
+	
+	<button class = "toggleBtn">24.11</button>
+	
+	<ol id = "24.11">
 		<li>
-			<a href="Note/Note(input%20-%20Scanner,%20BufferedReader).html">Note(input - Scanner, BufferedReader).html</a>
+			<a href = "Note/2411/Note(input%20-%20Scanner,%20BufferedReader).html">Note(input - Scanner, BufferedReader)
+																																					 .html</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.13).html">24.11.13</a>
+			<a href = "Note/2411/Note(24.11.13).html">24.11.13</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.14).html">24.11.14</a>
+			<a href = "Note/2411/Note(24.11.14).html">24.11.14</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.15).html">24.11.15</a>
+			<a href = "Note/2411/Note(24.11.15).html">24.11.15</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.16).html">24.11.16</a>
+			<a href = "Note/2411/Note(24.11.16).html">24.11.16</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.17).html">24.11.17</a>
+			<a href = "Note/2411/Note(24.11.17).html">24.11.17</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.18).html">24.11.18</a>
+			<a href = "Note/2411/Note(24.11.18).html">24.11.18</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.19).html">24.11.19</a>
+			<a href = "Note/2411/Note(24.11.19).html">24.11.19</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.21).html">24.11.21</a>
+			<a href = "Note/2411/Note(24.11.21).html">24.11.21</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.22).html">24.11.22</a>
+			<a href = "Note/2411/Note(24.11.22).html">24.11.22</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.23).html">24.11.23</a>
+			<a href = "Note/2411/Note(24.11.23).html">24.11.23</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.24).html">24.11.24</a>
+			<a href = "Note/2411/Note(24.11.24).html">24.11.24</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.25).html">24.11.25</a>
+			<a href = "Note/2411/Note(24.11.25).html">24.11.25</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.26).html">24.11.26</a>
+			<a href = "Note/2411/Note(24.11.26).html">24.11.26</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.27).html">24.11.27</a>
+			<a href = "Note/2411/Note(24.11.27).html">24.11.27</a>
 		</li>
 		<li>
-			<a href="Note/Note(24.11.28).html">24.11.28</a>
+			<a href = "Note/2411/Note(24.11.28).html">24.11.28</a>
 		</li>
 		<li>
-		<a href="Note/Note(24.11.29).html">24.11.29</a>
-	</li>
+			<a href = "Note/2411/Note(24.11.29).html">24.11.29</a>
+		</li>
 		<li>
-			<a href="Note/Note(24.11.30).html">24.11.30</a>
+			<a href = "Note/2411/Note(24.11.30).html">24.11.30</a>
 		</li>
 	</ol>
+	
+	<br>
+	
+	<button class = "toggleBtn">24.12</button>
+	
+	<ol id = "24.12">
+		<li>
+			<a href = "Note/2412/Note(24.12.02).html">24.12.02</a>
+		</li>
+	</ol>
+
 </div>
-	<div class = "box2">
-		<ul>
-		
-		</ul>
-	</div>
+<div class = "box2">
+	<ul>
+	
+	</ul>
+</div>
+<script>
+	document.addEventListener('DOMContentLoaded', function ()
+	{
+		document.querySelectorAll('.toggleBtn').forEach(function (button)
+		{
+			button.addEventListener('click', function ()
+			{
+				const buttonTitle = this.textContent.trim();
+				const targetOl = document.getElementById(buttonTitle);
+				
+				if (targetOl)
+					{
+						// 현재 display 상태에 따라 토글
+						targetOl.style.display = targetOl.style.display === 'none' ? 'block' : 'none';
+					} else
+					{
+						console.error(`ID '${buttonTitle}'에 해당하는 요소를 찾을 수 없습니다.`);
+					}
+			});
+		});
+	});
+</script>
 </body>
-
-
 <!--뷰어 창을 일정 이상 축소시켰을 때
 우측 메뉴가 하단에 결합되는 식으로 이동되게 하고 싶다. -->
+
 </html>
+
+
+
