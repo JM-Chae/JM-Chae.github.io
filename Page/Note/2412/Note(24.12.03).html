@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.12.03</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h4>Bellman–Ford algorithm, Floyd–Warshall Algorithm</h4>
+			<p>
+				今日は昨日いまいち理解出来なかったBellman–Ford algorithmを活用する問題と、Floyd–Warshall Algorithmを活用する問題を解いた。</p>
+			<p><a href = "https://www.acmicpc.net/problem/1865">Baekjoon 1865門(ワームホール)</a></p>
+			<p>昨日の問題のコードからそこまで変形しなくても正解を導き出すことができた。有意することは、道路の場合は両方向、ワームホールの場合は必ずしもマイナスコストで単方向ということ。
+				 Bellman–Ford algorithmの場合、出発ノードを選び、全ての経路を入力された分だけめぐるため、V-1
+				 の回数を繰り返せば全ての最短距離がでるというアルゴリズム。今日でコート上のその仕組みを理解できた。</p>
+			
+			<p><a href = "https://www.acmicpc.net/problem/11403">Baekjoon 11403門(Finding Road)</a></p>
+			<p>Floyd–Warshall Algorithmだが、このアルゴリズムの場合はV³のTime complexityを持っていることだけ有意しておけば具現するのは簡単そう。
+			中間点Kをおいて、<span class="accent">SからKまでのコスト+KからE
+				 までのコストがＳからＥまでのコストより少なければその値に更新する</span>というアルゴリズム。仕組みは簡単だけど、入力データーが大きくなると使えないため、汎用性は悪そう。</p>
+			
+			<p>
+			</p>
+			
+			<h4>The Space</h4>
+			<p>今日はBoard Delete Logicを直し、Community Create Viewを作成した。
+			前、バックエンドから掲示物作成者と削除要請者の一致可否を確認するLogicを追加したけど、考えなしにParamを設定(Idの方)しておいて、設定し直した(Uuidに変えた)。
+			初めてどたばたしながら作っているせいで、コードが色々と落ち着かないところが多いように感じる。ちゃんとした計画や、修正を行う際の確認が徹底してなければならないと日々感じる。</p>
+			<p>
+			</p>
+			<br>
+			<hr>
+			<br>
+			
+			<h4></h4>
+			<p></p>
+			<br>
+			<p></p>
+		
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+
+
+<!--뷰어 창을 일정 이상 축소시켰을 때
+우측 메뉴가 하단에 결합되는 식으로 이동되게 하고 싶다. -->
+</html>
