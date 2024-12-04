@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.12.04</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h4>Minimum Spanning Tree, breadth-first search</h4>
+			<p>
+				今日はMSTアルゴリズムを活用する問題と、BFSアルゴリズムを活用する問題を勉強した。
+			</p>
+			<p><a href = "https://www.acmicpc.net/problem/24116">Baekjoon 24116門(JOI: 本選会場)</a></p>
+			<p>日本語になっている問題があったから調べてみると、日本情報オリンピックという大会があるらしく、その大会に出題された問題っぽい。</p>
+			<p>ともかく、この問題はMSTアルゴリズムを活用する問題で、Union＆Find演算をしながらｎ部グラフ判別をして最小コストを導き出せば正解となる。
+			最近ずっとグラフ関連問題を解いていたから慣れていたとばかり思っていたが、幹線にだけ目が行ってしまい、肝心なFind演算を勝手に改造して間違ってしまった。
+				そこを直し、ランク基準でUnion演算を行うように直して正解。
+			</p>
+			
+			<p><a href = "https://www.acmicpc.net/problem/5567">Baekjoon 5567門(パーティ)</a></p>
+			<p>
+				ずっとBFSアルゴリズムを上手く活用できなくて、今日もBFSアルゴリズムを復習するためにこの問題を解いた。が、今日もうまく行かなかった。
+				breadth-first searchなのに、幅を計算するところでいつも手こずってしまっている気がする。
+				友達の友達まで(つまり、友達の友達の友達とその以降は招待しない……)という条件定義があいまいな感じになっていてそこを最初読み取れなかったので時間を多く費やしてしまったし……
+				自分の読解力を疑ってしまう(韓国語でもあいまいなのは同じだった)……
+				
+				今後も、慣れるまではBFSアルゴリズムを繰り返し練習しなければ。
+			</p>
+			
+			<p>
+			</p>
+			
+			<h4>The Space</h4>
+			<p>CommunityListViewのCSSを少し改善し、現在ログインしている使用者のIDから、その使用者がADMIN権限を持っているCommunityを全て照会して
+			Listを更新するLogicを追加した。そのためDBあたりをどうすればいいかかなり悩んでしまったけど、思い付きで色んな技能を追加してきたから結構ごちゃまぜになっている感がぬぐえない。
+			かなり非効率的になっているので、後々色々とDBをいじりながら遊ばないと！
+			
+			これこそバックエンド志望の僕が勉強するべきところだけど、最近はフロントばかり見ている希ガする……</p>
+			<p>
+			</p>
+			<br>
+			<hr>
+			<br>
+			
+			<h4></h4>
+			<p></p>
+			<br>
+			<p></p>
+		
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+
+
+<!--뷰어 창을 일정 이상 축소시켰을 때
+우측 메뉴가 하단에 결합되는 식으로 이동되게 하고 싶다. -->
+</html>
