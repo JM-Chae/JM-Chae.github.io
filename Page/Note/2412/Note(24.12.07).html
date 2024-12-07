@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.12.07</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			
+			<h4>CTを育てなければならない……</h4>
+			<p>
+				昨日のこともあり、今日は朝からずっとアルゴリズムの勉強とコーディングテストの問題とにらめっこをした。
+				Tree資料構造関連の問題をずっと見ていたけれど、やはりいまいち分からなかった。
+			</p>
+			<p>
+				資料構造とアルゴリズムに対する基礎知識も最小限は頭に入れてはいるが、
+				直接問題と向き合えばどんなアルゴリズムを選んで、どのように具現すればいいかがさっぱりだ。
+			</p>
+			<p>
+				ちゃんと思い付き、適したアルゴリズムを選んでコードを書いたとしても具現が上手くできてなくて間違うことも多い気がする。
+				結局はコンピューター向けに考える方法を体得しなければならないということになるが…… 難しい。
+			</p>
+			<p>
+				精進あるのみ、だろう。
+			</p>
+				<br>
+			<p>
+				今日解いた問題も乗せておこう。
+			</p>
+			<br>
+				<a href = "https://www.acmicpc.net/problem/15900">15900</a>
+			<p>偶数であれば敗、奇数であれば勝ということは理解できたし、リーフノードのDepthを全て足して％２をするということまでは分析できたけど、具現ができなかった。
+				現在訪問したノードがリーフノードかどうかを判別する基準が分からなかった。リーフノードは次数が１(幹線)！！！！
+			</p>
+				<br>
+				<a href = "https://www.acmicpc.net/problem/13116">13116</a>
+			<p>
+				ちゃんと解けたけど、合理的じゃなかった。こういうところでＣＴが足りないのが分かる。
+				配列を作ってif文で判断しながらメモリーをバリバリ使ってたし、そのため応答時間もめちゃくちゃかかっていた。
+				普通に、’高い方を割る２’を同じ数字になるまで繰り返して出力すれば良かった……
+			</p>
+				<br>
+				<a href = "https://www.acmicpc.net/problem/20364">20364</a>
+			<p>
+				これも、最初はDFSを活用して解こうとしていた。ターゲットノードから割る２をして 、最後の親ノードまで訪問しながら転居中の土地を更新すればいい。
+				とまでは分析できたんだけど、DFSだと訪ねたノードも繰り返して何度も訪ねるため間違っていた。
+				普通に親ノードがrootnodeになるまで繰り返してやれば正解だった。
+			</p>
+				<br>
+				<a href = "https://www.acmicpc.net/problem/9372">9372</a>
+			<p>
+				BFSを使って全部を訪ねよう、とまで考えられた。でも、どうやって幹線を通った数を数える？？？となってしまった。
+				MSTアルゴリズムによって、全てのノードを訪れるための最小幹線はn-1ってことを有意すべきだ。
+				全ての入力をガン無視して、n-1出力するだけで正解だった……
+			</p>
+				<br>
+				<a href = "https://www.acmicpc.net/problem/14244">14244</a>
+			<p>
+				リーフは次数が１のノードってことを有意使用。rootnodeも次数が１なら(１直線のツリーなら)リーフってことになる。
+				なので、出力にdepthやほかの制限はなかったので、リーフノードが２の場合はただ一直線のツリーを作ればOK.
+				３個以上なら、rootnodeの下に求められるリーフの数の分だけ子ノードを付けて、あとは適当に一直線につなげばOKだった。
+			</p>
+			
+			
+			<p>
+			</p>
+			<br>
+			<hr>
+			<br>
+			
+			<h4></h4>
+			<p></p>
+			<br>
+			<p></p>
+		
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+
+
+<!--뷰어 창을 일정 이상 축소시켰을 때
+우측 메뉴가 하단에 결합되는 식으로 이동되게 하고 싶다. -->
+</html>
