@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.12.18</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			
+			<h4></h4>
+			<p>
+			</p>
+			<p>
+				<a href = ""></a>
+			</p>
+			<p>
+			</p>
+			
+			<br>
+			Hussein Nasser - Back-End Engineering
+			<h4>UDP(User Datagram Protocol)</h4>
+			<p>
+				Transport Layerに属するプロトコルの一つ(Connectionless)。
+			</p>
+			<p>
+				IPプロトコルの上で動作し、データーを簡単かつ高速転送を提供する方法。UDPは信頼性を保証しないけれど、速度が重要なアプリケーションで使われる。
+			</p>
+			<p>
+				UDPは、受信者からのレスポンスがなく、一方通信の形をしている。よって、転送成功・失敗などのチェックがない。
+				データーを独立的なPacket単位で送るため、TCPとは違いデーターの再調整や欠損チェックなどの作業がない。
+				headerも8byteで簡単。→SourcePort・DestinationPort・Length・Checksum
+			</p>
+			<p>
+			</p>
+			
+			<h4>TCP(Transmission Control Protocol)/TLS(Transport Layer Security)</h4>
+			<p>
+				UDPとは違い、Connection志向のプロトコル。
+			</p>
+			<p>
+				TCPは、データー交換をする前に3way Handshake(SYN/SYN-ACK/ACK)を通してまずコネクションを設定する。
+			</p>
+			<p>
+				データーをはSegment単位で送られ、それを順番を沿って再構築するための番号がheaderとして含まれる。転送したデーターに対するACK(確認応答)が返ってこないと、再転送するため欠損のチェックができる。
+			</p>
+			<p>
+				コネクションを切るときも、4way Handshakeを通す(FIN/ACK/FIN/ACK)
+			</p>
+			<p>
+				上記特性を持つため、混雑制御やデーターストリームの制御ができる。→安定的なデーター転送。
+			</p>
+			<p>これに伴い、TLSはTCP上で主に使われる暗号化プロトコル。暗号化・認証・無欠性を特徴として持つ。</p>
+			<p>
+				TLSはHandshakeを通して暗号化をするための設定をしていく。まずはクライアントから使用可能な暗号化方法を転送すると、サーバーからはそれに応じて使用する暗号化方法を選び、サーバーの公開キーと共に返答。そしてその公開キーをもってSymmetric-keyを作り共有する。そしてそのキーをもって通信を暗号化する。
+			</p>
+			<p>
+			</p>
+			<br>
+			<p></p>
+		
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
