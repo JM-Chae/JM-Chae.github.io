@@ -67,7 +67,9 @@ li:hover, a:hover {
 }
 
 p {
-    text-indent: 1em;
+    color: #e3e3e3;
+    font-size: 20px;
+    text-indent: 20px;
     max-width: 900px;
     margin: 0.5em;
 }

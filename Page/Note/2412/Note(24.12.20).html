@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.12.20</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			
+			<h4>Dynamic Programing</h4>
+			<p>
+				DPアルゴリズムの復習。
+			</p>
+			<p>
+				<a href = "https://www.acmicpc.net/problem/1904">1904問</a>
+			</p>
+			<p>
+				複雑に考えしすぎてかなり手こずってしまった。1000000のフィボナッチ数を15746で割ったあまりを出力するだけでよかったんだ。
+			</p>
+			<p>
+				再帰関数で入力されたNをarr[N] = ((N-1)+(N-2))％15746。
+			</p>
+			<p>
+				％15746を忘れて、資料型をBigIntegerでやろうとする馬鹿でした......
+			</p>
+			<p>
+			</p>
+			<p>
+			</p>
+			
+			<br>
+			<h4>WebSocket</h4>
+			<p>
+				WebSocketはクライアントとサーバーの両方通信をリアルタイムで提供するプロトコル。
+			</p>
+			<p>
+				その特徴として一番大事なのはFull-Duplexで、サーバーとクライアントが同時にデーターを送受信できるのでリアルタイムでの通信ができる(サーバーの更新事項を即時に受け取れる)。
+			</p>
+			<p>
+				ほかにもHTTPとは違いリクエスト・レスポンスを通さないためLatencyが低いこと、コネクションを維持するためheaderのOver headが少ないし状態追跡も容易。
+			</p>
+			<p>
+				でも、短所としては初期の設定が複雑というところ、コネクションをずっと維持するためコネクションしているクライアントが多くなれば多くなるほどコストが高くなる、
+				拡張が難しい、代替できる技術が多くなっているなどがある。
+			</p>
+			
+			<br>
+			<h4>HTTP(HyperText Transfer Protocol)</h4>
+			<p>
+				クライアントとサーバーのデーター通信プロトコル。
+			</p>
+			<p>
+				主にウェブブラウザとサーバーの間でHTMLやその他リソースのリクエスト・レスポンスの処理をするために使われる。
+			</p>
+			<br>
+			<p>
+				HTTPは1.1 ・ 2 ・ 3(QUIC)の順で発展した。
+			</p>
+			<br>
+			<p>
+				─ HTTP/1.1は ウェブ通信の基礎となる存在。
+			</p>
+			<p>
+				簡単で安定的であるし、高い互換性を持つ。ただし、一つのコネクションに一つのReq/Resだけを処理するため、データーheaderを毎Reqごとに転送するため非業率的。
+				HOL(Head-of-Line)blockingにより遅延の恐れがある。
+			</p>
+			<br>
+			<p>
+				─ HTTP/2は1.1の短所を補完したBinaryProtocol。
+			</p>
+			<p>
+				Multiplexingを導入し、一つのコネクションでストリーム単位で複数のReq/Resを処理することができるようになった。headerを圧縮して転送サイズを小さくした。
+				サーバーから、クライアントのReqが来る前に必要なリソースを予め転送できるようになった。
+			</p>
+			<p>
+				でも、1.1より具現するのが複雑で、HOL(Head-of-Line)blockingが完全に解決できてはいない。
+				一つのTCPコネクションに複数のReq/Resを乗せられるようになったけれど、そのTCPコネクションのデーターストリームに損失が発生する場合、その次のデーターストリームに遅延が発生する。
+				→ 各々のTCPコネクションは独立性を持っているため、ほかのコネクションには問題を及ばない。
+			</p>
+			<br>
+			<p>
+				─ HTTP/3はTCPの長所を維持しながら短所だけ補完するために設計されたUDP基盤のProtocol。UDP上にQUICというプロトコルを使用する。
+			</p>
+			<p>
+				UDP基盤のQUICプロトコルを使用することで各ストリームが独立性を持ちHOL問題を完全排除できた。
+			</p>
+			<p>
+				コネクションと保安設定を同時に行う。
+				0RTT(Zero Round-Trip Time)機能を導入しコネクション遅延時間を短縮;
+				クライアントが前のコネクションで受け取ったセッションチケットを使ってリコネクション時にもHandshakeなしに送受信が可能。
+			</p>
+			<p>
+				モバイル環境などの不安定なネットワーク環境上でも、コネクションIDを使ってネットワークを管理するためコネクションが切れることなくユーザーの経験をよりよくする。
+			</p>
+			<p>
+				だが、UDP基盤での環境で働くため、一部Firewallに制限されたり、NAT環境でUDPコネクション維持が難しい問題がある。
+			</p>
+			<p>
+				QUICはUDP基盤で働くが、Packet管理や信頼性問題をソフトウェア的に追加処理をするため、CPUの使用量が増加する。大規模トラフィック処理環境ではCPU負荷が激しい恐れがある。
+			</p>
+			<p>
+				0RTTの保安の恐れもある。
+			</p>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
