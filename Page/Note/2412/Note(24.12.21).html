@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.12.21</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			
+			<h4>Dynamic Programing</h4>
+			<p>
+				DPアルゴリズムの復習。
+			</p>
+			<p>
+				<a href = "https://www.acmicpc.net/problem/9461">9461問</a>
+			</p>
+			<p>
+				１～１０までの解を問題ないで教えてくれていたのでとても簡単だった。
+				が...... Nが１～１００までだったので、intで行けると思ったが行けなかった。
+				longで宣言したら正解だった。
+			</p>
+			
+			<br>
+			<h4>gRPC</h4>
+			<p>
+				gRPCはGoogleが開発したRemote Procedure Call Frameworkとして、相違するシステム間の通信をより効率的かつ簡単に処理するために設計された。
+			</p>
+			<br>
+			<div>
+				主な特徴
+				<br>
+				<p>- HTTP/2を基盤としたMultiplexing・Header圧縮、Server-Pushを提供する。</p>
+				<p>- RESTとは違いJSONではなくProtocol Buffersを活用し高速かつ効率的なserialization・Deserializationを行う。</p>
+				<p>- 多様な言語と互換性を持つ(クライアントとサーバーを違う言語で具現加)</p>
+				<p>- 両方向ストリーミングが出来る(ReqとResが同時にストリーミングできる)。</p>
+				<p>- Schema基盤設計(Protoファイルをもって明示的Interfaceを定義する)。</p>
+			</div>
+			<br>
+			<p>
+				MSA環境で有効！
+			</p>
+			<br>
+			<h4>WebRTC (Web Real-Time Communication)</h4>
+			<p>
+				WebRTCはブラウザー間Real Time Communicationを支援するOpensource技術。
+			</p>
+		<p>
+			主に音声、映像、データ転送のためのProtocolとAPIを提供し、Plug-inや追加ソフト無しでWeb RTCを実現する。
+		</p>
+			<br>
+			<div>
+				主な特徴
+				<br>
+				<p>- Plug-in無しのブラウザー基盤のRTC</p>
+				<p>- P2P通信; 中間サーバーを通さずクライアント間の直接通信 → サーバーの負荷を減らし、遅延を最小化する。</p>
+				<p>- SSL/TLS暗号化を基本的に提供し、安全な通信を保障</p>
+			</div>
+			<br>
+			<div>
+				主な構成要素
+				<br>
+				<p>- MediaStream; 外部入力装置からデータを取り、他Peerへ転送を行う。</p>
+				<p>- RTCPeerConnection; 他Peerとのコネクションを設定、維持、データを交換するAPIで、ビデオや音声ストリームを転送したり、ICE・STUN・TURNを使ってNATとFirewallを通れるように手伝う。</p>
+				<p>- RTCDataChannel; Peer間のデータをリアルタイムで転送するAPI。</p>
+			</div>
+			<br>
+			<div>
+				コネクション過程
+				<br>
+				<p>1．クライアントがgetUserMedia APIを通じて自身のメディア情報を要請。</p>
+				<p>
+					2．SDP(Session Description Protocol)を通じてセッション情報交換。 <br>
+					  クライアントは自身のメディア情報とコネクションできる候補IPを含んだSDPを作り交換する。
+				</p>
+				<p>3．ICE(Interactive Connectivity Establishment)を使って両クライアントがコネクションできる最適の経路を探す。</p>
+				<p>4．Peerコネクション・データ転送。</p>
+			</div>
+			<br>
+			<div>
+				<p>だが、一番の恐れはNATやFirewallの問題である。</p>
+				<p>NATとFirewall環境によっては直接的な通信が難しい場合があるので、TURNサーバーを使用した中継が必要となる → コスト増加、遅延</p>
+			</div>
+			<br>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
