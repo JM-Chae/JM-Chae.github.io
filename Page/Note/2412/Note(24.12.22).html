@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.12.22</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			Hussein Nasser - Back-End Engineering
+			<h4>HTTPS 通信 Handshake</h4>
+			<br>
+			<div>
+				TLS1.2 + TCP 基盤 HTTPS
+				<p>TCP Handshake → TLS Handshake</p>
+				<p>Client → Server：SYN</p>
+				<p>S → C：SYN-ACK</p>
+				<p>C → S：ACK</p>
+				<p>C → S：ClientHello</p>
+				<p>S → C：ServerHello</p>
+				<p>C → S：Fin</p>
+				<p>S → C：Fin</p>
+				<p>Req/Res</p>
+			</div>
+			<br>
+			<div>
+				TLS1.3 + TCP 基盤 HTTPS (TLS Handshake 過程が１往復短縮)
+				<p>TCP Handshake → TLS Handshake</p>
+				<p>Client → Server：SYN</p>
+				<p>S → C：SYN-ACK</p>
+				<p>C → S：ACK</p>
+				<p>C → S：ClientHello</p>
+				<p>S → C：ServerHello, Fin</p>
+				<p>C → S：Fin, Req</p>
+			</div>
+			<br>
+			<div>
+				TLS1.3 + 0RTT TCP 基盤 HTTPS (既存セッションがある場合、Session Resumptionを通じて0RTTを行う)
+				<p>TCP Handshake → TLS Handshake</p>
+				<p>Client → Server：SYN</p>
+				<p>S → C：SYN-ACK</p>
+				<p>C → S：ACK</p>
+				<p>C → S：ClientHello, Req(前のセッション情報からの情報を送り、Reqを同時に転送)</p>
+				<p>S → C：ServerHello, Res, Fin(サーバーから受け取った前のセッション情報を検証し、問題がなければ受諾してResを転送)</p>
+				<p>C → S：Fin</p>
+			</div>
+			<br>
+			<div>
+				TLS + QUIC 基盤 HTTPS (TLS HandshakeをQUIC初期設定と同時に行う)
+				<p>Client → Server：QUIC(TLS：ClientHelloを含む)</p>
+				<p>S → C：QUIC(TLS：ServerHello, Fin)</p>
+				<p>C → S：QUIC(TLS：Fin)</p>
+				<p>Req/Res</p>
+			</div>
+			<br>
+			<div>
+				TLS + 0RTT QUIC 基盤 HTTPS　(既存セッションがある場合、Session Resumptionを通じて0RTTを行う)
+				<p>Client → Server：QUIC(TLS：ClientHelloを含む), Req (前のセッション情報からの情報を送り、Reqを同時に転送)</p>
+				<p>S → C：QUIC(TLS：ServerHello, Fin), Res (サーバーから受け取った前のセッション情報を検証し、問題がなければ受諾してResを転送)</p>
+				<p>C → S：QUIC(TLS：Fin)</p>
+			</div>
+			<br>
+			<div>
+				要約
+				<p>TLS1.2: Handshake段階が多く、初期設定に時間を取られる。</p>
+				<p>TLS1.3：Handshake段階が省かれており、1.2より効率的。</p>
+				<p>QUIC：QUICの長所+HandshakeとTLS Handshakeを同時に処理するので早い。</p>
+				<p>0RTT：リコネクション時にHandshakeを省いてデータ転送を開始するので早い。</p>
+			</div>
+			<br>
+			<br>
+			<h4>Process&Thread</h4>
+			<p>
+				プロセスはOS上で実行される一つの独立したプログラム。プロセスは専用メモリ空間とシステム資源を持つ。
+			</p>
+			<p>
+				スレッドは一つのプロセス内で実行される作業の単位。一つのプロセスは複数のスレッドを持ち、スレッドは基本的にメモリを共有する。
+			</p>
+			<p>
+				ProcessとThreadの概念以外にも、CPUからのスケジューリング方法についても語っていた。以前CS/OS関連の講義を見ていた時に学んだ内容が(MutexやCOWなど)ざっくりとした感じで出てきたので、案外理解はできた。
+			</p>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
