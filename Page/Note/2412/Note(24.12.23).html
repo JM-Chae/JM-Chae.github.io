@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.12.23</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			Hussein Nasser - Back-End Engineering
+			<h4>バクエンドからコネクションを受諾する過程</h4>
+			
+			<p>実質的にコネクションを管理するのはKernel ← 主体。</p>
+			<p>バックエンドアプリケーションはKernelを利用して作業を行う存在である。</p>
+			<br>
+			<div>
+				Kernelの役割
+				<p>0．Serverが実行されるとアプリケーションはKernelにsocketの生成とbindを要請する。 LISTEN socket</p>
+				<p>1．ClientからSYNを受信すると、Kernelがその情報を基にSYN Queueに入れる。 SYN_RECEIVED</p>
+				<p>2．KernelはSYNに対するResとしてClientへSYN-ACKを送信。 SYN_RECEIVED</p>
+				<p>3．ClientからACKを受信するとTCP 3Way Handshakeが完了となり、KernelはSYN QueueからAccept Queueへ移動させる。 → 新しいsocketを作り、ESTABLISHED状態にしてバックエンドに送る。</p>
+			</div>
+			<p>
+				バックエンドは上記過程がすべて完了すると、Kernelから受け取ったコネクションされたsocketを利用してClientと通信する。
+				そしてその後のデータ送受信に関しても、すべてKernelから処理を行い、バックエンドはアプリケーション上のAPILogicを処理するだけとなる。
+			</p>
+			<br>
+			<p>起きうる問題</p>
+			<p>ClientがSYNを送り、ServerからSYNーACKを受け取ったが、最終的なACKが返って来ない場合(SYN Flooding・Half-Open Connection)、SYN Queueを占有し続け、正常的な他Clientからの要請が処理できなくなる。</p>
+			<p>解決策としてはTCP SYN Timeoutを設定すること・SYN Cookies(SYN情報をcookieを通じて検証するため、SYN Queueを使わない)を活性化することなどがある。</p>
+			<br>
+			
+			<h4>Socket データ受信・送信</h4>
+			<h5>Kernelの仕事。</h5>
+			<div>
+				受信
+				<p>1．NIC(Network Interface Card)からClientからPacketを受信し、インタラプトを発生しKernelがPacketを受け取る</p>
+				<p>2．KernelのNetwork StackがPacketをIP Layerで処理(目的地住所・Header確認など)。そしてTCP LayerからはPacketのTCP Headerを確認してデータが正しいsocketにマッピングされるかを確認してから、そのPacketを受信Bufferに入れる。</p>
+				<p>3．各SocketはKernel内の受信Bufferを持ち、データはそこに入る。←ここまでがKernelの管理領域。</p>
+				<p>4．KernelはそのSocketが準備完了したことをアプリケーションに知らせる。</p>
+			</div>
+			<br>
+			<div>
+				送信
+				<p>1．バックエンドアプリケーションから送信要請を受け取る(データをSocketに)。</p>
+				<p>2．受け取ったデータのサイズとSocketの状態を確認し送信Bufferに入れる。</p>
+				<p>3．データをTCP Segment単位に分け、Headerを追加する。</p>
+				<p>4．完成したTCP PacketをNICに送り、NICからClientに送られる。</p>
+			</div>
+			<br>
+			<h5>バックエンドの仕事。</h5>
+			<div>
+				受信
+				<p>1．バックエンドアプリケーションはKernelのイベント通知を基にKernelの受信Bufferからデータを読み取り、ユーザー空間にコピー。</p>
+				<p>2．データをLogicにより処理し、Resを作る。</p>
+			</div>
+			<br>
+			<div>
+				送信
+				<p>1．Resを作り、Kernelの送信Bufferにコピーする。</p>
+			</div>
+			<br>
+			<p>
+				バックエンドから効率的(待機なし)なデータ送受信処理を行うには、io_uringを利用したAsynchronousの具現などの解決法がある。
+				 CPUをより効率的に活用できる。
+			</p>
+			<br>
+			<h4>Listener, Acceptor, Reader</h4>
+			
+			<p>
+				Listener: NetworkのSocketを作り、コネクションを待機させる。新しいコネクション要請を受信し、処理する準備を行う。
+			</p>
+			<p>
+				Acceptor: Listenerが受信したコネクション要請をAcceptし、Socket handleをReaderまたは処理スレッドに送る。
+			</p>
+			<p>
+				Reader: Acceptorが作ったSocketを通じてClient からデータを読み取る。読み取ったデータをアプリケーションLogicに送ったり、処理結果をClientへ返還する。
+			</p>
+			<br>
+			
+			<h5>
+				1. Single Listener, Single Acceptor, Single Reader
+			</h5>
+			<div>
+				<p>単一スレッドですべての作業を処理するため、性能が制限的。</p>
+				<p>トラフィックが多くなるとボトルネック現象が発生する。</p>
+			</div>
+			<br>
+			<div>
+				<p>単一スレッドですべての作業を処理するため、性能が制限的。</p>
+				<p>トラフィックが多くなるとボトルネック現象が発生する。</p>
+			</div>
+			<br>
+			<h5>2. Single Listener, Single Acceptor, Single Reader + Load Balancing</h5>
+			<div>
+				<p>メッセージ処理段階でマルチスレッドを適用しているので性能向上。</p>
+				<p>Readerはデータを受信してワーカスレッドに処理を委任する。</p>
+			</div>
+			<br>
+			<div>
+				<p>Acceptor段階でのボトルネックはまだ解消されていない。</p>
+			</div>
+			<br>
+			<h5>3. Single Listener, Single Acceptor, Multi-Reader</h5>
+			<div>
+				<p>Reader段階での並列処理でClient応答時間短縮。</p>
+			</div>
+			<br>
+			<div>
+				<p>Acceptor段階ではまだ単一スレッド処理なため、Req数が爆発的に多くなるとボトルネック現象発生。</p>
+				<p>Reader管理の複雑性増加。</p>
+			</div>
+			<br>
+			<h5>4. Single Socket + Multi-Acceptor</h5>
+			<div>
+				<p>Acceptor段階で並列処理になりコネクション要請の受諾性能が飛躍的に向上。</p>
+				<p>コネクション受諾のボトルネック現象を解消。</p>
+			</div>
+			<br>
+			<div>
+				<p>Acceptor段階とSocket処理の管理複雑性増加。</p>
+				<p>具現が難しい。</p>
+				<p>Listener段階ではまだ単一化されている。</p>
+			</div>
+			<br>
+			<h5>5. Multi-Listener, Multi-Acceptor, Multi-Reader</h5>
+			<div>
+				<p>ListenerからReaderまで全過程を並列で処理するため、一番性能が良い。</p>
+				<p>Socket Shardingでポート共有問題解決。</p>
+			</div>
+			<br>
+			<div>
+				<p>具現と維持保守が非常に難しい。</p>
+				<p>システム資源消費が大きい。</p>
+				<p>性能面で設定が必要。</p>
+			</div>
+			<br>
+			
+			<p>1～2：小規模処理に適していて具現が比較的に簡単。</p>
+			<p>3～4：中～大規模処理に適している。高性能と柔軟な拡張性を持つ。</p>
+			<p>5：性能と拡張性に関して一番優れているが、設計と管理が非常に難しい。</p>
+			<br>
+			
+			<h4>Idempotence</h4>
+			<p>例えば、支払いの要請を送って、同時に何かの間違いでTimeOutになったとする。サーバー側はその要請を受け取り、支払いが完了したけど、Clientではリトライをすることになって、２度支払いが発生したら大問題。</p>
+			<p>なので、Idempotenceを維持するためにはシステム状態を不必要に変更しないように(重複要請を識別)設計すること。その一つの方法として、各要請にIDを付与すること。でも、そうするとそのたびDBを参照したりとする必要があるためコストが発生。ほかの方法としてはUpsert(Update/Insert)構造でAPIを設計すること。</p>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
