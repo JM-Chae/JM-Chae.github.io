@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.12.24</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			Hussein Nasser - Back-End Engineering
+			<h4>Proxy, Reverse Proxy</h4>
+			
+			<p>ProxyはClientとServerの間で仲介役割をするServerもしくはソフト。</p>
+			<br>
+			<div>
+				特徴
+				<p>Clientの保護(匿名性)。</p>
+				<p>Caching(頻繁に行われる要請をキャッシングしてServerの負荷を減らし応答速度を向上させる)。</p>
+				<p>制御(特定サイトやリソースに対する接近を塞いだり)。</p>
+				<p>Logging、モニタリング。</p>
+			</div>
+			<br>
+			<p>
+				Reverse ProxyとはProxyとは逆に、Clientからの要請を受け取ると、複数のServerの中で適した一つのServerを選び処理を任せる役割。Clientはその存在をしらない。
+			</p>
+			<div>
+				特徴
+				<p>Server保護(実際ServerのIP住所を隠したり)。</p>
+				<p>ロードバランシング。</p>
+				<p>Reverse ProxyがSSL認証を管理し、Serverの負担を減らす。</p>
+				<p>Caching(Serverの応答をCachingして速度を向上させる)。</p>
+				<p>ClientとServerの間で行き来するデータを圧縮したり返還して効率を上げる。</p>
+			</div>
+			<br>
+			<h4>Layer4・Layer7 ロードバランサー</h4>
+			<br>
+			<p>Layer4ロードバランサーはTransport Layerで作動するため、TCP・UDPなどの転送プロトコルによって処理を行う。</p>
+			<p>PacketをそのままServerに転送するため、内容までは関与しない。</p>
+			<p>そのため、処理速度が早く、具現が単純だがHTTP HeaderやURLなどのデータによる分散処理はできない(コンテンツ別の分散Logicの具現不可)。</p>
+			<br>
+			<p>Layer7ロードバランサーはApplicationLayerで作動するため、HTTPなどの応用段階のプロトコルによって処理を行う。</p>
+			<p>URL・cookie・headerなど、データを基に細かい分散Logicを具現できる。</p>
+			<p>SSL/TLSといった暗号化をロードバランサーが代理で行うため、Serverの負荷が減る。</p>
+			<br>
+			<p>結論的には、ロードバランサーがデータをまず受け取り、各Serverへ適切に委任する役割をしてくれうことで全体的な負荷を減らすことに目的があるみたい。</p>
+			<p>速度と単純性が重視されるサービスならLayer4ロードバランサー、精密なトラフィック制御とコンテンツ基盤分散が必要ならLayer7ロードバランサー。</p>
+			
+			<br>
+			<br>
+			<h5>受講完了</h5>
+			<p>Hussein Nasser - Back-End Engineering</p>
+			<p>正直ぼくにはまだまだ難しい内容ばかりで、でもどこかで見たことがあり、使ったことがあるものが多くて、大きな空洞を部分的に埋めていき、より細かい蜘蛛の巣になっていくような気がした。</p>
+			<p>その蜘蛛の巣はまだ空いている部分が多く、一つの完成した織物になるにはまた知識を埋めていかなければならない。</p>
+			<p>講義の内容はガイド的なもので、実際そこまで深く語ってはいなかった。語っていたとしてもたぶんぼくには吸収しきれなかっただろう。</p>
+			<p>それは、実際ぼくが使い、追加的に勉強して習得していかねばならない！</p>
+			
+			<p>次はDB管理の講義を見るつもりでいる。それが終わったら、The Spaceに色々工夫をしてみるつもりだ。</p>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
