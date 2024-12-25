@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.12.25</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h3>Hussein Nasser - Database Engineering</h3>
+			<hr>
+			
+			<h4>ACID</h4>
+			<br>
+			
+			<h5>Transaction</h5>
+			<p>1つの作業を行うQueryの集合体で、データを変更したり修正したり、読み取り専用の作業を行う。</p>
+			<p>Transactionは通常、ユーザーが明示的に開始するけど、ユーザーが任意で開始しない場合、DBが自動的に開始するように設定することができる。
+				 そして、データをCommitしたりRollbackすることも可能。</p>
+			<br>
+			<h5>Atomicity</h5>
+			<p>Transaction内のすべてのQueryが成功しなければならない(分離不可)。 何らかの理由で1つのQueryでも失敗すると(DBがダウンする場合なども含め)、
+				 そのTransactionはRollbackされなければならない。</p>
+			<p>したがって、Transactionが完全に終了した後にCommitするか、それとも1つのQueryを実行するごとにCommitするのか、
+				 Commitをどのタイミングで行うかによって、Transactionのパフォーマンスや一貫性に影響を与えることになる。
+				 </p>
+			<br>
+			<h5>Isolation</h5>
+			<p>複数のTransactionが同じデータを同時に読み書きしようとする場合、Read Phenomenaが発生する可能性があるためIsolationが必要になる。</p>
+			<p>Read Phenomenaには、Dirty reads、Lost updates、Non-repeatable reads、Phantom readsがあり、
+				 これらはDBのIsolationレベルをどう設定するかによって防ぐことができる。だが、各設定はそれに伴うコストも明確に存在する(状況に合う選択が必要)。</p>
+			<br>
+			<h5>Consistency</h5>
+			<p>データの一貫性には2つのタイプがある。</p>
+			<p>データの一貫性は、参照整合性(Table間の関係)、read consistency(Isolationレベル)の要因によって決まる。</p>
+			<p>Eventual Consistencyは、分散DB環境で強い一貫性が要求されないアプリケーションに適した方法で、一時的にデータの不整合を許容するが、
+				 最終的には一定の時間が経過した後、すべての複製が同じデータに更新され、一致する状態になるメカニズム</p>
+			<br>
+			<h5>Durability</h5>
+			<p>Transactionが正常にCommitされると、変更が永続的に保存され、システム障害が発生してもデータが失われないことを保証する特性。</p>
+			<p>write-ahead logging(WAL)、Checkpoints、AOF、Asynchronous Snapshotなどの方法をもって、
+				 Durabilityを保証するためにDBはTransactionをCommitするたびにLogを残したり、定期的にCheckpointを設定したりすることで障害からの復旧を可能にする。</p>
+			<br>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
