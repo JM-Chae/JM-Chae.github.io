@@ -1,3 +1,7 @@
+html {
+    font-family: Meiryo, sans-serif;
+}
+
 body {
     background-color: rgba(0, 0, 0, 0.941);
     display: flex;

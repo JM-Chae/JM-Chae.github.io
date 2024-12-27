@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.12.27</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h3>Coding Test</h3>
+			<hr>
+			<h4>brush up on</h4>
+			<br>
+			<p><a href = "https://www.acmicpc.net/problem/7795">Binary Search</a></p>
+			<p><a href = "https://www.acmicpc.net/problem/12891">Sliding Window</a></p>
+			<p>アルゴリズムを復習するために、アルゴリズムを学んだ順に、過去解いた問題から難しく感じた問題を解きなおそうと思った。</p>
+			<p>今日解いた２つの問題はどっちも１回目で当てることが出来た。</p>
+			<p>前回解いたコードと比べても分かり安く書けた気がするし、成長を感じる。</p>
+			
+			<br>
+			<h3>Hussein Nasser - Database Engineering</h3>
+			<hr>
+			
+			<h4>Database Indexing</h4>
+			<br>
+			
+			<h5>TableとIndexがどのようにDiskに書き込まれるのか。</h5>
+			<p>基本的にはExcelの表のような形で、当たり前だがRowとColumnデータとして書き込まれる。</p>
+			<p>それを読み込む時の作業が大事なわけで、Table情報はPage単位で一定大きさごとに束ねられて書き込まれ、読み込む時もPage単位で参照しながら目標を検索する。</p>
+			<p>そのため、膨大なTableから特定目標を検索するとき、Index無しで作業をするとなるとそのTableを0Pageから参照して目標が出るまで作業を繰り返してしまう(Full Table Scan)。
+				 するとデータ参照が無駄に多くなり処理時間も増加するため、適切にIndexを設定することでそれを塞ぐことができる。</p>
+			<p>Non-Clustered IndexはTable情報をもってIndex Key、PKを基準で新しいPageを作り、実際のデータではないPointerを書き込む。
+				 なので検索を行う時はそのPointerを基にPKのIndexから目標を探索して結果を読み込む方式を取る。</p>
+			<p>Clustered Indexは、上記のようにPK Indexは別途に管理されるため、基本的にPKがClustered Indexと見ていい。Indexがもう既に整列されてる場合使える。
+				 その理由はPKはデータが書き込まれる際、PKの順によって書き込み位置が決められるからだ。なので、UUIDといったランダムな文字列をPKとして使うのは効率が悪い。
+				 なので、ランダムな文字列を使用しなければならない場合はClustered Indexを使わないか、UUIDを順次的に生成されるように設計することを考慮すべき。</p>
+			
+			<br>
+			<h4>Row based table & Column based table</h4>
+			<br>
+			<p>言葉通り、データをRow基盤で書き込むかそれともColumn基盤で書き込むかによって区分される。</p>
+			<p>Row based tableは一般的なDBの形であり、ユーザーデータ管理やTransaction処理などに使われるが、
+				 Column based tableの場合はデータ分析などの特定作業が行われるアプリで採用されているDB管理方法。</p>
+			<p>書き込み方はあまり難しく考えることはなく、下のようにデータがColumn単位で書き込まれると思えばそれでいい。</p>
+			<br>
+			<p>1, 2, 3 (ID)</p>
+			<p>a, b, c (name)</p>
+			<p>4, 4, 5 (value1)</p>
+			<p>5, 5, 4 (value2)</p>
+			<br>
+			<p>例えば、value1やvalue2だけの合計や平均が欲しい場合、必要なRowだけ読み込めば作業が終わるのでとても効率的。</p>
+			<p>だが、ID 1のすべての情報が欲しい場合は多数のメモリに接近して読み込みを行わなければならないのでとても効率が悪い(書き込み、修正、削除も)。</p>
+			<p>この場合は一般的なRow based tableの方が一回だけですべての情報を読み込めるので効率的。</p>
+			<p>つまり、要約すると、データ分析を主に行うアプリケーションの場合はColumn based tableのほうが効率的だと言える。</p>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
