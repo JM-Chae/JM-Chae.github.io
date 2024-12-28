@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>24.12.28</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h3>Hussein Nasser - Database Engineering</h3>
+			<hr>
+			
+			<h4>Database Indexing</h4>
+			<br>
+			
+			<h4>Index scan, Full table scan</h4>
+			<p>実際多量のデータを持つTableでIndex scanとFull table scanの速度を試してみた。</p>
+			<p>Indexは、辞書の目次と同じ機能をするため、Indexを使うか使わないかで莫大な差がある。</p>
+			<p>どんなQueryを行うかによってIndexを効率的に設計するのは有効的になる。</p>
+			<p>そして、検索条件として表現式を使うことはIndex scanができないので、Full table scanと同様に遅くなる。</p>
+			<br>
+			
+			<h4>explainを使うと、Queryの予測を見れる。</h4>
+			<p>select * : Filterがなく、すべてを持ってくる。すなわち、すべてのTableを参照するということで、当たり前に最悪な時間がかかる。膨大なTableからだと、迂闊に使うとシステムがDownする可能性もある。</p>
+			<p>select (field)：*と同じだが、読み込むデータの大きさが制限される。</p>
+			<p>select * where (PK) = '?'：Filterが働き、整列されたIndexもあるので効率的に読み込む。</p>
+			<p>select * order by (PK)：すでに整列されているIndexがある場合、全体検索をするとしても少しの性能向上がある。データも順番に書き込まれているため、I/O作業の効率もよくなる(読み込み作業も改善される)。でも、全てのデータを読み込むため、場合によっては性能向上は制限的で、システムDown可能性あり。</p>
+			<p>select * order by (no index)：整列するための追加コストが発生するため、整列されていないデータをorder byするのは高リスク。</p>
+			<br>
+			
+			<h4>Bitmap index scan</h4>
+			<p>Bitmap index scanは、与えられた条件式に合致するデータの位置をBitmapを利用して探し、その位置のデータを読み取るScanning方法。</p>
+			<p>多重条件で優れた性能を発揮する。Bitmap indexは空間を多く使うので、小さいTableよりは大きなTableで有効的。</p>
+			<p>例えば、１～１０Pageを持つTableで何らかの条件A、B(andだと仮定)が与えられたとしたら下のような検索過程になる。</p>
+			<pre>
+  10                1
+  A
+  0 0 0 0 1 0 1 1 0 0
+  B
+  1 1 0 0 0 0 1 0 0 0</pre>
+			<p>読み取るのはAとBが共に合致する4番目のPageだけ読み取り、そこからデータをScanする。</p>
+			<br>
+			
+			<h4>Non/Identifying Indexing</h4>
+			<h5>Identifying Indexing</h5>
+			<p>特に識別キーを指定しなければ自動的にPKを識別キーとして使ってIndexを作る(PKを探すためのIndex)。</p>
+			<p>Identifying Indexingは一般的にClustered Indexで具現されるためuniqueを保証する。</p>
+			
+			<h5>Non-Identifying Indexing</h5>
+			<p>識別キーではなく、任意のColumnを基に作られるIndex。</p>
+			<p>検索性能を向上させるために使われ、unique性を保証しない(重複可能)。</p>
+			<br>
+			
+			<h4>Index only scan</h4>
+			<p>Indexingを通じてIndex内部に指定したColumn情報を含んでいるため、与えられた条件の情報がIndex内に存在しているなら、Tableを検索せずにIndex内でその情報が分かるので効率的。</p>
+			<p>でも、Indexに含まれる情報量が多くなるとIndexの大きさが大きくなるため、読み取るデータ量が多くなり、コストが高くなる可能性がある。</p>
+			<br>
+			
+			<h4>Composite Index</h4>
+			<p>２つ以上のColumnを使ってIndexingすることを指す。</p>
+			<p>Composite Indexの場合、And演算がとても効率的になる。だが以下の特徴を持っている。</p>
+			<p>Column A, Bを使ってIndexingしたとする。</p>
+			<p>where AでQueryを実行すると、A_B Indexを使って効率的な検索ができる。A and B Queryも同じ。</p>
+			<p>でも、where B Queryの場合はA_B Indexは使えずにSeq scanすることになる。</p>
+			<p>Composite Indexは左側にいるColumnに限って単体Scanが許される。</p>
+			<p>それはA or B Queryのときも同じで、Bは単体ScanができないためSeq scanをすることになる。</p>
+			<p>なので、この場合はA, B Indexing, B Indexing。２つのIndexを設計することでどの演算でも効率的な検索ができる。</p>
+			<br>
+			
+			<h4>Bloom Filter</h4>
+			<p>複数のHash関数を使用し、各要素を複数のBit配列の位置にマッピングします。</p>
+			<pre>
+例:1 2 3 4 5 6 7               . . . . .
+   0 0 0 0 0 1 1 0 1 0 0 0 0 0 . . . . 0</pre>
+			<p>NAME要素にBloom Filterを作るとすると、以下のようにマッピングされます。</p>
+			<p>Jane = 6, Merry = 7, Enby = 9, Carry = 6 (位置Value仮定)</p>
+			<p>こんな風にマッピングされる。</p>
+			<p>例えば、Jane がTableにあるかどうかを検索すると、配列の６番が１であるため、Trueを返します。</p>
+			<p>ただし、空間が制限的で、重複記録になるため、False positiveが発生する可能性があります。例えば、Annを検索したとして、Annは7の位置Valueを持つと仮定すると、同じ7であるMerryが登録されたときにすでに配列の７番が１になっているため、実際AnnはTableにないのにTrueを返します。このため、Bloom Filterは意味がなくなる場合があります。</p>
+			<p>一方で、Falseを返した場合は100％信用できます。</p>
+			<p>このような特徴を持つため、結果がFalseかどうかを確かめる際には効率的に作動します。しかし、Bloom FilterでTrueを返した場合は、必要に応じて実際のTableを検索する必要があります。</p>
+			<p>また、上記の短所を補完した変形のFilterも存在するため、適材適所に選んで導入することが可能です。</p>
+			<br>
+			
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
