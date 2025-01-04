@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>25.01.04</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h3>Hussein Nasser - Database Engineering</h3>
+			<hr>
+			<h4>B-TREE B+TREE</h4>
+			
+			<h5>Original B-tree</h5>
+			
+			<p>B-treeはTree構造のNodeの集合体で構成されている。</p>
+			<p>TableのIDと、そのPageに移動するためのTIDがKeyとValueとして記されている。</p>
+			<p>親ノードを基準に探しているIDが親ノード要素のKeyより小さいか大きいかでどの子ノードに移動するのかを決める。なのでFull table scanより効率的で速い。</p>
+			<br>
+			<p>だがすべてのNodeがKeyとValueを持ってなければならないのでメモリの浪費になることもある。そしてそのせいで不必要なIO作業が行われ遅延が発生する。あとは範囲queryを実行する時に(例えばID１～５までの読み込み)Treeを数回巡回することになるので効率が悪い。</p>
+			
+			<h5>B+tree</h5>
+			
+			<p>Original B-treeの問題点を補完して最適化された。Leaf NodeだけTIDを持つ。そしてそのLeaf Nodeは順番にLinkedされているので、範囲Queryにも効率的に作動する。Leaf Node以外はIDだけを索引に使うために持っていて、Leaf NodeのKeyと被るようになっているが、最小限のコスト。</p>
+			
+			<br>
+			
+			<h4>Database Partitioning</h4>
+			
+			<p>Tableを任意の単位で分割して管理する方法。100億個のRowがあるTableより、1億のRowのTableで作業を行う方が明らかに早い。Partitioning方法にはVertical・Horizontalの二つの方法がある。</p>
+			<p>Partitioning基準としては日付・IDなどの範囲だったり、使用者の地域・年齢などの集計だったり使用環境上での任意で決める。
+				 その中にはHash functionによるPartitioningもある。</p>
+			
+			<h5>Vertical Partitioning</h5>
+			<p>言葉通り、垂直分割。Rowを分割して(Column単位)複数の塊にする。例えばサイズの大きいBlob Fieldがあり、それを分割したりという用途で使う。</p>
+			
+			<h5>Horizontal Partitioning</h5>
+			<p>言葉通り、水平分割。Row全体を一つの塊として範囲ごと分割する方法(1~200Row、201~400Row)。</p>
+			
+			<h5>Partitioning/Sharding</h5>
+			
+			<p>Partitioningは単一DB内でTableを物理的に分割して管理し、DB性能を引き上げる技術。</p>
+			<p>Shardingは複数のDB Serverに分散セーブして、トラフィック制御の機能も含めている技術。</p>
+			<br>
+			<br>
+			<hr>
+			<p>今日は新年度最初の記録になる。</p>
+			<p>もう少しすれば本格的な就活の始まりだ。過去を振り返ると、とても感慨深い。</p>
+			<p>頑張ろう。</p>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
