@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>25.01.06</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h3>Coding Test</h3>
+			<hr>
+			<h4>brush up on</h4>
+			<br>
+			<p><a href = "https://www.acmicpc.net/problem/2178">迷路探索</a></p>
+			<p>最短距離を測る問題なのにDFSで解けると思ったのが、そもそもちゃんと特徴覚えてないというところだろう......</p>
+			<p>BFSに変えて具現することは一度で行けた。</p>
+			<br>
+			
+			<h3>Hussein Nasser - Database Engineering</h3>
+			<hr>
+			<h4>Database Sharding</h4>
+			
+			<p>Tableを特定基準を持って複数のDBに分散する。DB Serverが各々違うので場合によってQueryが同時多発に処理できるようになるから効率がいい。
+				 ボトルネック現象を制御できる。Userの国を基に分散したり、特定ValueをHashingして一貫性を持つ分散の仕方もある。</p>
+			<p>上の利点を得る反面、TableをJoin作業や修正など管理作業をする際に各Shardを個別的に管理する必要があるので全般的なデータの管理はより難しくなる。</p>
+			<p>DB Shardingは最終的に悩むべき解決法である。おかれている問題を正確に認識して、DBモデリング改善、Indexing改善、DB Partitioning、DB複製など色んな改善方法がある。DB Shardingは同時多発的な書き込み要請の量がとても多く、いろんな方法を工夫しても単一Serverでは到底手が負えなくなった時に考慮すべきである。大きな理由の一つはSharding環境ではACID特性を完璧に保障することが難しくなるためだ。</p>
+			
+			<br>
+			
+			<h4>同時性制御</h4>
+			
+			<h5>Exclusive Lock</h5>
+			
+			<p>書き込みLock。データの修正・書き込みTransactionが行われる時、他Transactionからの接近を遮るために作動する。データの無欠性を保証する。</p>
+			<p>同じデータに一つのTransactionがExclusive Lockを設定できるShared Lockが設定されていたらExclusive Lockは設定できない。逆にExclusive Lockが設定されていたらShared Lockも設定できない。</p>
+			
+			<br>
+			
+			<h5>Shared Lock</h5>
+			
+			<p>読み込みLock。データの読み込みTransactionが行われる時、他Transactionからの修正・書き込み作業を遮るために作動する。読み込みデータの一貫性(Consistency)を保証する。</p>
+			<p>Shared Lockは複数設定できる。だが、Shared Lockが設定されているデータにExclusive Lock(書き込み・修正作業)は設定できない。</p>
+			
+			<br>
+			
+			<h5>Dead Lock</h5>
+			
+			<p>この前CPUとスレッドの講義を受講してた時に見たことがあるものだった。複数のTransactionが互いに占有している資源を要請し、無限ローディングに陥る現象を指すやつ。</p>
+			<p>相互排除・占有と待機・非先占・環形待機の４つの条件が満たされる時に発生する。
+				 環形待機が一番しっくり来るもので、例えばA/B/C/Dが、各々1/2/3/4を占有している状態で、2/3/4/1を待機している状態。
+				 どのリソースも先取りできず、待機せねばならない場合Dead Lock状態が発生する。</p>
+			<p>DBMSはDead Lockを完全に防ぐことはできないが、基本的にDead Lockを察知し解消するメカニズムを提供するが、
+				 Lock戦略やTransaction構造の最適化を通じて事前予防をするべき。</p>
+			
+			<br>
+			
+			<h5>2段階Lock</h5>
+			
+			<p>複数のTransactionがデータAに対する作業を行う前にLockを設定し、作業が終わった後に解除することでConsistencyとSerializabilityを保証する。</p>
+			<p>例えば、座席ブッキングが２重で行われてしまえば行けないので、User Aが１座席にブッキングするために１のブッキング状況を読み取ると同時にExclusive Lockを設定(for update)。
+				 その時点でUser Bもブッキングのために読み取ると同時にExclusive Lockを設定するが、Aが先にExclusive Lockを設定しているため待機状態になる。
+				 Aが予約を完了し、Lockを解除したら、BにはAが予約した情報を読み取ることとなりブッキングが失敗する。という流れ。</p>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
