@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>25.01.07</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h3>Coding Test</h3>
+			<hr>
+			<h4>brush up on</h4>
+			<p><a href = "https://www.acmicpc.net/problem/16173">Jump king Jelly</a></p>
+			<p>BFSを使ってすぐに具現できた。けど...... １回目ではメモリ超過の結果が。この条件でなぜ？？？と思ったが、それこそ条件の即断が問題だった。</p>
+			<p>どうせ移動条件は下か右しか無かったので、重複訪問はないだろうと訪問Check配列は置いてなかったが、敷地の数が０の場合その場で無限ループに陥ることがぱっと見て分かっちゃった......</p>
+			<p>敷地が０の場合breakするコードを追加して解決。</p>
+			<p>実戦でこんなミスをして誤答になったらとてももどかしそうだ......</p>
+			<br>
+			<h4>New Challenge</h4>
+			<p><a href = "https://www.acmicpc.net/problem/2075">the N'th largest number</a></p>
+			<p>制限時間やメモリーの条件が余裕で簡単な問題だった。PriorityQueueを使ってすぐに具現できた。</p>
+			
+			<br>
+			
+			<h3>Hussein Nasser - Database Engineering</h3>
+			<hr>
+			<h4>Database Replication</h4>
+			
+			<p>一つのMasterDBを基準に１個以上の複製DBを作って運営する方法。</p>
+			<p>書き込み作業は基本的にMasterDBにだけ行われ、それが順次に複製DBにもアップデートされる。</p>
+			<p>読み取り専用の複製DBが多く確保できるので作業の分散ができ、性能向上につながる。だが、アップデートには時間がかかり、複製DBから読み取る場合Consistencyが完全には保障できない。</p>
+			
+			<br>
+			
+			<h5>Multi-Master Replication</h5>
+			
+			<p>一つのMasterDBで書き込み作業が追い付けない場合、Master(書き込み許容)DBを複数置く方法で複製する。
+				 この場合、もちろん単一MasterDBより書き込み処理の許容量が多くなるが、すなわち衝突の危険性も多くなるということになる。そのための副作業が必要になり、単一Master複製より具現が難しい。</p>
+			
+			<br>
+			
+			<h4>Synchronous/Asynchronous Replication</h4>
+			
+			<h5>Synchronous Replication</h5>
+			
+			<p>MasterDBから書き込み作業が行われた場合、その作業が複製本にも反映された時点Transactionが完了される。</p>
+			<p>全ての複製本がいつも最新状態になる。障害発生時のデータ損失も少ない。</p>
+			<p>だが、MasterDBが複製本からの応答を待つことになるので遅延が発生する。ネットワーク環境や複製本の数によって性能に多く影響を与える。</p>
+			
+			<br>
+			
+			<h5>Asynchronous Replication</h5>
+			
+			<p>MasterDBから書き込み作業(Transaction)が完了したあと、複製本へその作業の内容を転送する。</p>
+			<p>Consistencyに影響を与え、データ損失の危険性はあるが、遅延などの発生がないため性能面では優秀。</p>
+			<br>
+			
+			<h4>Twitter/URL shortening Service System Design</h4>
+			<p>講師の経験から、サービスを設計する際にどのようにDB Tableをデザインするべきかを、状況と環境を例えてただただ語る講義内容だった。</p>
+			<p>かなり抽象的な講義だったし、講師本人正解はないという言葉を強くアピールしていたので、面白半分の気分で見ていた。</p>
+			<p>CRUDウェブ掲示板のアプリケーションを作っている真っ最中のぼくからすれば、今後どのように考慮すべきかのいろは的な講義でもあったが、
+			サービス経験と実戦で問題に駆られたことがないのでやっぱり実際サービスに関わってみることが大事だと思う。</p>
+			<br>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
