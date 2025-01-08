@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>25.01.08</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h3>Hussein Nasser - Database Engineering</h3>
+			<hr>
+			<h4>DB Engine</h4>
+			
+			<p>正直、個人的に作るトイプロジェクトでなければ僕がそれをチョイスする権限？を持つのはかなりの未来の話になると思っている。</p>
+			<p>現時点では、こういうものがあるんだなという気持ちで見た。</p>
+			<br>
+			<p>あまり関係のない話ではあるが、僕がThe Spaceで使っているMariaDBのMariaが開発者の娘の名前からとってきたというところが面白かった。</p>
+			
+			<br>
+			
+			<h4>DB Cursor</h4>
+			
+			<p>DB Cursorとは、DBのQuery結果集合から、特定Rowを指すPointerである。データを１Rowずつ処理できるようにする。
+				 大量のデータを処理するときにより精密な操作が可能だけど、性能面で遅く、リソースを多く要るので単純作業では向いていない。</p>
+			
+			<h4>Client-Side/Server-Side Cursor</h4>
+			<p>分かりやすく比較すると、どっちがメモリの負担を持つかの違いだと思う。</p>
+			
+			<h5>Client-Side Cursor</h5>
+			
+			<p>Client ApplicationがDB ServerからQuery結果を全て取得し、処理を行う。</p>
+			<p>Serverへの負荷が少なく、Client側でデータを自由に操作可能。だが、大量データ処理時にClientのメモリやネットワーク帯域幅を多く消費する。</p>
+			
+			<br>
+			
+			<h5>Server-Side Cursor</h5>
+			
+			<p>DB ServerがCursorを管理し、Clientは結果セットを一度に全て取得するのではなく、必要な分だけ順次取得する。</p>
+			<p>大量データ処理時のメモリ使用量を抑え、ネットワークコストを削減可能。だが、Serverの負荷が増加し、ClientとServer間の通信が頻繁になる可能性がある。</p>
+			<br>
+			<br>
+			<hr>
+			<p>最近は日本で暮らしていくための問題についてや、結婚の件について色々悩んだり調べたりであまり勉強の進捗が進まない......</p>
+			<p>煩悩があるからか、年末年始のこともあったので猶更なのか、集中もできないし。ちょっと詰んでいる。が、継続することは大事だ。適度に休んだりはしても、おろそかになることはあってはならない。</p>
+			<br>
+			<p>２月にはまず、ぼくの両親に彼女を紹介する予定でいる。ぼくの両親はかなり放任主義なので、止められたり、国柄の～とかないけれども、緊張はする。ぼくもこれなのに、彼女はより緊張するだろう。</p>
+			<p>ぼくが彼女のご両親へ会う時は、きっとぼくもすごい緊張してることだろう。</p>
+			<br>
+			<p>何はなんであれ、ことは進んでいると思う。...頑張ろう。</p>
+			<br>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
