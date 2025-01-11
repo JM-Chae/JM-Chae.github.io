@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>25.01.10</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h3>Coding Test</h3>
+			<hr>
+			<h4>brush up on</h4>
+			<p><a href = "https://www.acmicpc.net/problem/11689">GCD(n, k) = 1</a></p>
+			<p>Euler phi functionを使うということは思い出せたけど、具現することが出来なかった。</p>
+			<p>前のコードを見て、また復習。</p>
+			<p><a href = "https://www.acmicpc.net/problem/1707">二部グラフ</a></p>
+			<p>最初、非循環ツリーの幹線の数は必ずN-1ということを思い出し、それで挑んだけど問題の条件から外れていたのでX</p>
+			<p>瞬間構造になっているものを探すためにBFSを使ってCheckerを置いて具現したけど、そもそも循環構造は関係なく、二部グラフは隣接したノード同士が繋がっているのがいけないわけで、二部グラフに対する理解が足りなかった。</p>
+			<p>それを認識しなおした上で、コードを書き直したが、グラフをArrayListで具現する際に、どうせ全ノードを出発地点として設定して回すため、
+				 幹線情報を一方通行(A.add(B)だけ)にしても良いだろうと誤断してしばらく何故間違い？？となったけど、後々気づいて、両方通行にして正解。</p>
+			<p>まだまだ足りないみたいだ......</p>
+			<br>
+			
+			<h3>Hussein Nasser - Database Engineering</h3>
+			<hr>
+			<h4>NoSQL/MongoDB</h4>
+			
+			<p>MongoDBのストレージエンジンであるWiredtigerやIndexing方法についても内容だった。難しい難しすぎるし、今の段階でぼくが知るべき知識ではないと判断し、ただ生のまま知識を入れておく感覚で受講した。</p>
+			<p>MongoDBはRelationalDBと違ってJSON構造でデータを保存し、そのKeyがRelationalDBのColumnのFiled名と同じ機能を果たすらしい。</p>
+			<p>RelationalDBのようにTableに設定してある全てのColumn情報が無くてもデータが保存できる柔軟性を持っている。というところだけを覚えて置きたい。</p>
+			<p>上のような柔軟性を持つがため、メディアリソースやTEXT・ファイルリソースなど色んな物を保存するためRDBMSとりコスト面や管理面でも優れてると聞くので、
+				 後々、The SpaceにChatを追加するときはMongoDBを使ってみたい。書き込み処理がRDBMSより優れているというところもリアルタイムで行われるChatでなら強みだろう。</p>
+			<br>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
