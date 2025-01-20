@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<title xmlns = "http://www.w3.org/1999/html">Note</title>
+<html lang = "ko">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel = "stylesheet" href = "../../../Style/Style.css">
+	<link rel = "shortcut icon" href = "../../../icon.jpg" type = "image/x-icon">
+	<script src = "../../../Js/Main.js"></script>
+</head>
+
+
+<div class = "navSpace">
+</div>
+<body>
+<nav>
+	<h2><a href = "../../../index.html">Home</a></h2>
+	<br>
+</nav>
+<div class = "note">
+	<div class = "box2" style = "margin: 0 auto;">
+		<h2>25.01.20</h2>
+	</div>
+	<div style = "margin: 0 auto;">
+		<text>
+			<h3>The Space</h3>
+			<hr>
+			<p>まずServerを起動させて試してみたけど、GSONやModelMapperでエラーが蔓延していた。</p>
+			<p>どっちもその内部の働きが不変性に触るような形で、recordに買えたのが悪かった模様。</p>
+			<p>探しまわって、ModelMapperでエラーを吐く部分はEntity→DTOの時のようで、このケースだけModelMapperを外し直接Constructorを使ってマッピングした。</p>
+			<p>GSONも、最新バージョンに変えたら、recordの対応ができた。</p>
+			<br>
+
+			<h3>Coding Test</h3>
+			<hr>
+			<h4>brush up on</h4>
+			<p><a href = "https://www.acmicpc.net/problem/24116">本選会場</a></p>
+			<p>答案を見ないで解くことが出来なかった。MST Algorithm...... 忘れないようにしよう。</p>
+			<p>Union/Findを使う時、不均衡TreeにしないためにDepthを比較してUnionさせる方法であまり理解が追い付かなかったけど、最後は理解することができた。</p>
+			<br>
+			<h4>New Challenge</h4>
+			<p><a href = "https://www.acmicpc.net/problem/1922">Network connection</a></p>
+			<p>MST Algorithmの問題をより熟知させるべきだと思ってすぐに解いてみたけど、本選会場とほとんど同じ問題だったので入力を条件に合わせただけで解けちゃった......</p>
+			<p>ちょっと時間をおいて、類似問題をまた解いてみよう。</p>
+		</text>
+	</div>
+
+</div>
+<div class = "list">
+	<div class = "box2">
+		<ul>
+			<li><a href = "../../Introduce.html" target = "_self">Introduce</a></li>
+			<li><a href = "../../Now.html" target = "_self">Now</a></li>
+			<li><a href = "../../Review.html" target = "_self">Review</a></li>
+			<li><a href = "../../Odds%20and%20ends.html" target = "_self">Odds and ends</a></li>
+			<li><a href = "../../NoteList.html">NoteList</a></li>
+		
+		</ul>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
